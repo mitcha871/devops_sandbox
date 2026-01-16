@@ -1,2 +1,2 @@
 # devops_sandbox
-O'Reilly DevOps textbook study
+Fundamentals of DevOps and Software Delivery O'Reilly textbook study
