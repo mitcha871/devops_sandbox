@@ -5,7 +5,21 @@
 Key ideas:
 
 * On-prem vs cloud
-* PaaS/IaaS
+* PaaS
+  * Platform as a Service examples include: Heroku, Render, Fly.io and Vercel.
+  * For these examples, _Render_ is selected as it offers a free Hobby tier.
+    * For a trivial web app you can simply point Render to a public repository (or sign in with Github) and it will build the image and deploy it.
+    * It also allows non-service workloads like jobs and cron, and private connectivity to AWS.
+    * Paid services include Metrics and Logs streaming (OpenTelemetry).
+    * PaaS providers do not offer the range of services that IaaS providers offer, but are simpler and likely cheaper; at a small scale you don't need IaaS.
+      * As a general principle you should spend as little time and money on software delivery as you possibly can while still meeting requirements.
+* IaaS
+  * Infrastructure as a Service examples include: Hetzner, DigitalOcean, Vultr, and Akamai.
+    * Non big 3 will be cheaper.
+  * IaaS is a better fit as these grow: load, company size, availability demands, security and compliance demands.
+    * Infrastructure and software delivery processes should grow with the company and be the right complexity to meet the needs of the company.
+  * Consider vendor lock-in clear eyed. It is plausibly the case that avoiding the use of proprietary solutions will slow down your deployment, and not pay for itself if you ever try to move.
+    * But, for most new projects, cloud is the way to go.
 
 ## Chapter 2: How to manage your IaS
 
