@@ -1,18 +1,17 @@
 # Fundamentals of DevOps and Software Delivery O'Reilly workbook
 
+Code examples [here](https://github.com/brikis98/devops-book)
+
 ## Chapter 1: How to deploy your app
 
-Key ideas:
-
-* On-prem vs cloud
 * PaaS
   * Platform as a Service examples include: Heroku, Render, Fly.io and Vercel.
   * For these examples, _Render_ is selected as it offers a free Hobby tier.
     * For a trivial web app you can simply point Render to a public repository (or sign in with Github) and it will build the image and deploy it.
     * It also allows non-service workloads like jobs and cron, and private connectivity to AWS.
     * Paid services include Metrics and Logs streaming (OpenTelemetry).
-    * PaaS providers do not offer the range of services that IaaS providers offer, but are simpler and likely cheaper; at a small scale you don't need IaaS.
-      * As a general principle you should spend as little time and money on software delivery as you possibly can while still meeting requirements.
+  * PaaS providers do not offer the range of services that IaaS providers offer, but are simpler and likely cheaper; at a small scale you don't need IaaS.
+    * As a general principle you should spend as little time and money on software delivery as you possibly can while still meeting requirements.
 * IaaS
   * Infrastructure as a Service examples include: Hetzner, DigitalOcean, Vultr, and Akamai.
     * Non big 3 will be cheaper.
@@ -23,8 +22,8 @@ Key ideas:
 
 ## Chapter 2: How to manage your IaS
 
-Key ideas:
-
+* Why use Ias?
+  * Speed & safety, documentation, version control, validation, self-servicability, reuse, toil elimination
 * Scripts & configuration management tools
 * Server templating tools
 * Provisioning tools
