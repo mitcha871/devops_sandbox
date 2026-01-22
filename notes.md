@@ -25,10 +25,11 @@ Code examples [here](https://github.com/brikis98/devops-book)
 * Why use Ias?
   * Speed & safety, documentation, version control, validation, self-servicability, reuse, toil elimination
 * Scripts & configuration management tools
-* Ansible does not have an official Docker image; it seems the intention is that you create your own Executable Environment
-  * https://docs.ansible.com/projects/ansible/latest/getting_started_ee/introduction.html
 * Server templating tools
 * Provisioning tools
+* Ansible is an open source automation engine to simplify configuraton, deployment and orchestration across servers.
+  * It does not have an official Docker image; it seems the intention is that you create your own Executable Environment:
+    * https://docs.ansible.com/projects/ansible/latest/getting_started_ee/introduction.html
 
 Bash, Ansible, OpenTofu, Packer, EC2, AMI
 

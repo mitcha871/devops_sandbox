@@ -1,0 +1,7 @@
+# Group variables for the ec2 inventory to configure how ansible connects to these hosts.
+# This is in the group_vars folder so ansible knows what it is.
+# This is named "sample_ec2_ansible.yaml because it matches the group key "sample_ec2_ansible"
+
+ansible_user: ec2-user
+ansible_ssh_private_key_file: ../../../../id_ed25519
+ansible_host_key_checking: false

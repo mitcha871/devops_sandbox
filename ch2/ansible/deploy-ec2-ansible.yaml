@@ -1,3 +1,7 @@
+# Basic one shot playbook for creating an EC2 instance.
+
+# $ ~/.ansible/bin/ansible-navigator run configure_sample_ec2_ansible.yaml --execution-environment-image ansible-aws-example:latest --pull-policy missing -i aws_ec2.yaml --mode stdout --penv AWS_DEFAULT_REGION --penv AWS_SECRET_ACCESS_KEY --penv AWS_ACCESS_KEY_ID
+
 - name: Deploy EC2 instances in AWS
   hosts: localhost
   gather_facts: no

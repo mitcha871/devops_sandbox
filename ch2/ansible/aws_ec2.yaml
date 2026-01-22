@@ -1,0 +1,16 @@
+# An inventory of hosts
+
+# Host inventory may be static
+# webservers:
+#   hosts:
+#     10.0.0.0
+# dbservers:
+#     10.0.0.1
+
+# Host inventory can also be dynamic
+plugin: amazon.aws.aws_ec2
+regions:
+  - ap-southeast-4
+keyed_groups:
+  - key: tags.Ansible  # Create a group based on the value of the "Ansible" key
+leading_separator: ''  # By default the leading separator is '_'
