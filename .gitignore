@@ -1,2 +1,4 @@
 **/*.log
 **/ansible/**/*.json
+**/.terraform*
+**/terraform.tfstate*
