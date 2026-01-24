@@ -1,0 +1,13 @@
+# ~/.ansible/bin/ansible-navigator run configure_sample_app_playbook.yaml --execution-environment-image ansible-aws-example:latest --pull-policy missing -i inventory.aws_ec2.yaml --mode stdout --penv AWS_DEFAULT_REGION --penv AWS_SECRET_ACCESS_KEY --penv AWS_ACCESS_KEY_ID
+
+- name: Configure servers to run the sample-app
+  hosts: sample_app_instances  # Target this group
+  gather_facts: true
+  become: true
+
+  serial: 1
+  max_fail_percentage: 30
+  roles:
+    - role: nodejs-app  # This first role is intended to prepare the server to run Node.js apps
+    - role: sample-app  # This second role is intended to run the sample app
+      become_user: app-user  # The second role is to be run as the user "app-user"

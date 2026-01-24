@@ -32,6 +32,7 @@ dependencies:
   galaxy:
     collections:
     - name: amazon.aws
+    # - name: community.general  # I needed to add this in order to run npm commands
 ```
 
 * Building the image

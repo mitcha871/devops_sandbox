@@ -65,11 +65,25 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
 
 ## Chapter 3: How to manage your apps by using orchestration tools
 
-Key ideas:
-
-* Server/Container/VM/Serverless orchestration
-
-Ansible, OpenTofu, Docker, Kubernetes, ASG, ALB, Lamdba
+* Core Orchestration problems:
+  * _Deployment_: Deploying one or more replicas of the app onto servers, and roll out updates - preferably with no noticeable downtime.
+  * _Scheduling_: Deciding which app runs on which hardware; ensuring it has the required CPU/Memory/Disk space.
+  * _Rollback_: Some way of rolling back bad updates.
+  * _Auto Scaling_: Either veritical or horizontal scaling that occurs in response to load.
+  * _Auto Healing_: Some mechanism to detect whether or not instances of an app are healthy, and restarting or replacing them accordingly.
+  * _Load Balancing_: Distributing load across replicas.
+  * _Configuration_: If there are multiple environments, configuring the app differently in each.
+  * _Secrets Management_: Securely storing and accessing sensitive information.
+  * _Service Communication_: Enabling communication between services.
+  * _Disk Management_: Ensuring instances of the app has access to the right disks.
+* Server orchestration
+  * The original pre-cloud approach: set up a bunch of servers, deploy your app to them, and update the servers in-place as needed. e.g. Using Ansible to deploy code onto a cluster of servers.
+* VM orchestration
+  * e.g. Deploy VMs into an EC2 autoscaling group.
+* Container orchestration
+  * e.g. Deploy containers into a Kubernetes cluster.
+* Serverless orchestration
+  * e.g. Deploy functions using AWS Lambda.
 
 ## Chapter 4: How to version, build and test your code
 

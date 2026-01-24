@@ -1,7 +1,7 @@
 # An ansible playbook for configuring a group of hosts to be configured to perform a particular "role"
 # A "role" is a logical configuration profile intended to promote modularity and reusability
 
-# ~/.ansible/bin/ansible-playbook -v -i aws_ec2.yaml configure_sample_ec2_ansible.yaml --execution-environment-image ansible-aws-example --mode stdout --pull-policy missing --container-options='--user=0' --penv AWS_DEFAULT_REGION --penv AWS_SECRET_ACCESS_KEY --penv AWS_ACCESS_KEY_ID
+# ~/.ansible/bin/ansible-navigator run configure_sample_ec2_ansible.yaml --execution-environment-image ansible-aws-example:latest --pull-policy missing -i aws_ec2.yaml --mode stdout --penv AWS_DEFAULT_REGION --penv AWS_SECRET_ACCESS_KEY --penv AWS_ACCESS_KEY_ID
 
 - name: Configure EC2 instances
   hosts: sample_ec2_ansible

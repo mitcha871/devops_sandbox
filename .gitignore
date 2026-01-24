@@ -1,4 +1,5 @@
 **/*.log
 **/ansible/**/*.json
+**/*playbook-artifact*.json
 **/.terraform*
 **/terraform.tfstate*
