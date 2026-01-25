@@ -1,0 +1,6 @@
+# This is an example of how to use third party roles, that may be stored on Github or Ansible Galaxy.
+# I didn't use this because I'm using an execution environment.
+
+- name: nginx
+  src: https://github.com/brikis98/devops-book-nginx-roles
+  version: 1.0.0

@@ -1,6 +1,6 @@
 # Basic one shot playbook for creating an EC2 instance.
 
-# $ ~/.ansible/bin/ansible-navigator run deploy-ec2-ansible.yaml --execution-environment-image ansible-aws-example --mode stdout --pull-policy missing --container-options='--user=0' --penv AWS_DEFAULT_REGION --penv AWS_SECRET_ACCESS_KEY --penv AWS_ACCESS_KEY_ID
+# $ ~/.ansible/bin/ansible-navigator run deploy-ec2-ansible.yaml --execution-environment-image ansible-aws-example --mode stdout --pull-policy missing --container-options='--user=0' --penv AWS_DEFAULT_REGION --penv AWS_SECRET_ACCESS_KEY --penv AWS_ACCESS_KEY_ID --extra-vars "@sample-app-vars.yaml"
 
 - name: Deploy EC2 instances in AWS
   hosts: localhost
@@ -10,16 +10,25 @@
   vars:
     num_instances: 1
     base_name: sample_ec2_ansible
+    http_port: 8080
   tasks:
     - name: Create security group
       amazon.aws.ec2_security_group:
-        name: "{{ base_name }}"  # Jinja templating syntax
+        name: "{{ base_name }} SSH"  # Jinja templating syntax
         description: "{{ base_name }} SSH"
         rules:
           - proto: tcp
-            ports: [22, 8080]
+            ports: [22]
             cidr_ip: 0.0.0.0/0
-      register: aws_security_group
+      register: aws_security_group_ssh
+    - amazon.aws.ec2_security_group:
+        name: "{{ base_name }}"  # Jinja templating syntax
+        description: "{{ base_name }} HTTP"
+        rules:
+          - proto: tcp
+            ports: [ "{{ http_port }}" ]
+            cidr_ip: 0.0.0.0/0
+      register: aws_security_group_http
 
     - name: 'Get all Amazon Linux AMIs'
       amazon.aws.ec2_ami_info:
@@ -34,7 +43,10 @@
         name: "{{ '%s_%d' | format(base_name, item) }}"
         key_name: mykey
         instance_type: t3.micro
-        security_group: "{{ aws_security_group.group_id }}"
+        security_groups: [  # It appears that security groups can be updated in-place
+          "{{ aws_security_group_ssh.group_id }}",
+          "{{ aws_security_group_http.group_id }}"
+          ]
         image_id: "{{ amazon_linux_amis.images[-1].image_id }}"
         tags:
           Ansible: "{{ base_name }}"

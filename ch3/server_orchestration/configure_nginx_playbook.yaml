@@ -1,0 +1,12 @@
+- name: Configure servers to run nginx
+  hosts: nginx_instances  # Target EC2 instances with the host Ansible: nginx_instances
+  gather_facts: true
+  become: true
+  roles:
+    - role: nginx
+      vars:
+        servers: >-  # Jinja templating syntax to set the nginx configuration to the app instances IP addresses.
+          {{ groups['sample_app_instances']
+             | map('extract', hostvars, 'private_dns_name')
+             | map('regex_replace', '$', ':8080')
+             | list }}

@@ -1,0 +1,7 @@
+# With this extra vars file we can use the existing deployment playbook to create a single instance for nginx.
+
+# ~/.ansible/bin/ansible-navigator run deploy-ec2-ansible.yaml --execution-environment-image ansible-aws-example --mode stdout --pull-policy missing --container-options='--user=0' --penv AWS_DEFAULT_REGION --penv AWS_SECRET_ACCESS_KEY --penv AWS_ACCESS_KEY_ID --extra-vars "@nginx-vars.yaml"
+
+num_instances: 1
+base_name: nginx_instances
+http_port: 80
