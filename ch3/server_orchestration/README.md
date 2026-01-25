@@ -33,3 +33,4 @@ Editing the security group and then rerunning the playbook will splat the change
 
 * Use the same `deploy-ec2-ansible.yaml` but with a different `nginx-vars.yaml` vars file to deploy a EC2 instance for nginx.
 * Then we use a third party role provided on Github: `requirements.yaml`
+* The load balancer is pointing directly to other public IP addresses.
