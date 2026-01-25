@@ -1,7 +1,4 @@
-# devops_sandbox
 Fundamentals of DevOps and Software Delivery O'Reilly textbook study
-
-# Fundamentals of DevOps and Software Delivery O'Reilly workbook
 
 Code examples provided by the book [here](https://github.com/brikis98/devops-book)
 
