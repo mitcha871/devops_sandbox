@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app-deployment
+spec:
+
+  replicas: 3
+  template:  # This block represents the pod template; the pods to be managed by this Deployment.
+    metadata:
+      labels:
+        app: sample-app-pods  # The pods will be created with the label app: sample-app-pods
+    spec:
+      containers:
+        - name: sample-app
+          image: sample-node-app:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: NODE_ENV
+              value: production
+          imagePullPolicy: Never
+  selector:
+    matchLabels:
+      app: sample-app-pods  # ie. This deployment is managing pods that have the label app: sample-app-pods
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 0

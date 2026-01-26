@@ -36,7 +36,7 @@ Upgrades are simply: rebuilding the image with a change and then updating the AS
 
 In this example we had a ASG with min 3 and max 10 with the rollout strategy allowing a miniumum healthy of 100% and maximum healthy of 200%.
 
-What this looked like was: during the upgrade rollout we went from 3 instances to 6 instances. Then the older instances were removed leaving only the new ones.
+What this looked like was: during the upgrade rollout we went from 3 instances to 6 instances. Then the older instances were removed leaving only the new ones. During the rollout, it's unpredictable whether a client will hit the new version or the old version.
 
 ```
 OpenTofu will perform the following actions:

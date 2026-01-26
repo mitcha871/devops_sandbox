@@ -84,6 +84,7 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
   * e.g. Deploy VMs into an EC2 autoscaling group.
 * Container orchestration
   * e.g. Deploy containers into a Kubernetes cluster.
+  * Instead of using basic yaml for Kubernetes management, use Helm, OpenTofu (with the Kubernetes provider), or Kustomize which support loops, conditionals and other programming language features that support code re-use.
 * Serverless orchestration
   * e.g. Deploy functions using AWS Lambda.
 
