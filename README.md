@@ -85,6 +85,9 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
 * Container orchestration
   * e.g. Deploy containers into a Kubernetes cluster.
   * Instead of using basic yaml for Kubernetes management, use Helm, OpenTofu (with the Kubernetes provider), or Kustomize which support loops, conditionals and other programming language features that support code re-use.
+  * You also generally don't want to be handwriting from scratch all your own IaC; instead, leverage things like official modules in the Terraform Registry or the [Google Cloud Foundation Toolkit](https://github.com/GoogleCloudPlatform/cloud-foundation-toolkit). Modules for AWS and Azure are:
+    * [Terraform AWS modules](https://github.com/terraform-aws-modules)
+    * [Azure Verified modules](https://github.com/Azure/Azure-Verified-Modules)
 * Serverless orchestration
   * e.g. Deploy functions using AWS Lambda.
 

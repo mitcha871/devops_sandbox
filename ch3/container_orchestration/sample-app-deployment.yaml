@@ -13,12 +13,13 @@ spec:
       containers:
         - name: sample-app
           image: sample-node-app:latest
+          # image: <Image URI if in ECR>
           ports:
             - containerPort: 8080
           env:
             - name: NODE_ENV
               value: production
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
   selector:
     matchLabels:
       app: sample-app-pods  # ie. This deployment is managing pods that have the label app: sample-app-pods

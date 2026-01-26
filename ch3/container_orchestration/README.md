@@ -45,3 +45,15 @@ kubectl destroy -f sample-app-deployment.yaml
 Kubernetes has built-in support for load balancing via a Kubernetes object called a Service. In the real world this would be a real GCP or AWS Load Balancer with a public IP address.
 
 Note if you change the name of a Deployment or service, it will orphan the existing object and just create a new one with the new name!
+
+Then I:
+
+* Used the eks module to create a EKS cluster
+* Authenticated to the EKS cluster with
+  * `aws eks update-kubeconfig --region <REGION> --name sample-app-eks`
+* Used the ecr module to create a ECR repository
+* Authenticated to the ECR
+  * `aws ecr get-login-password --region <REGION> | docker login --username AWS --password-stdin <Repository_URI>`
+* Retagged and uploaded the image to the ECR
+* Updated `sample-app-deployment.yaml` with the Repository URI of the image
+* Applied the yaml and then I could access the endpoint in my browser
