@@ -90,6 +90,9 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
     * [Azure Verified modules](https://github.com/Azure/Azure-Verified-Modules)
 * Serverless orchestration
   * e.g. Deploy functions using AWS Lambda.
+  * Originally this was FaaS (Functions as a Service): Upload a deployment package to a cloud provider, and have the package execute in response to a certain event like a HTTP request.
+  * Good for background jobs, event processing, and simple web apps. Not really suited for complex web apps.
+* While Container and Serverless orchestration tools offer a lot of advantages, don't be naive to their disadvantages, e.g. Complexity, opaqueness when debugging.
 
 ## Chapter 4: How to version, build and test your code
 
