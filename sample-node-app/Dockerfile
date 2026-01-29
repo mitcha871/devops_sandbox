@@ -1,8 +1,8 @@
-FROM node:lts-alpine3.23
-
-EXPOSE 8080
-
+FROM node:lts-alpine3.23 AS build-stage
 WORKDIR /usr/src/app
-
-COPY app.js /usr/src/app
-CMD ["node", "app.js"]
+COPY package*.json .
+RUN ["npm", "ci", "--only=production"]
+COPY app.js .
+USER node
+EXPOSE 8080
+CMD ["npm", "start"]

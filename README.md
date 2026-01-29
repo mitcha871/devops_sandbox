@@ -96,14 +96,9 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
 
 ## Chapter 4: How to version, build and test your code
 
-Key ideas:
-
-* Version control
-* Build systems
-* Dependency management
-* Automated testing
-
-Github, npm, Node.js, OpenTofu
+* Commits and PRs should be atomic.
+* It can be a good idea to enforce signed commits, where commits are validated through GPG or SSH keys.
+* Protect your branches.
 
 ## Chapter 5: How to set up continuous integration and continuous delivery
 
