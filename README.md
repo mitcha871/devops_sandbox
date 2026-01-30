@@ -99,16 +99,26 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
 * Commits and PRs should be atomic.
 * It can be a good idea to enforce signed commits, where commits are validated through GPG or SSH keys.
 * Protect your branches.
+* See sample-node-app for Node testing examples and ch4 for Terraform testing examples
+* Testing Terraform can come in a few forms:
+  * Literally deploying the infrastructure, running some tests, and destroying the infrastructure
+  * Static analysis (e.g. Terrascan)
+  * Policy enforcement (e.g. OPA)
+  * Integration tests (e.g. Terratest)
+* Testing pyramid: A large base of compiler, static, unit, policy tests; some integration tests, and a capstone of E2E, performance tests.
+* 100% coverage for testing is often poor return on time investment.
+* Consider the cost of bugs, likelihood of bugs, cost of tesing, cost of not having tests when planning testing.
+* Test driven development can be an extremely efficient way to add new features to an existing codebase.
 
 ## Chapter 5: How to set up continuous integration and continuous delivery
 
-Key ideas:
-
-* Trunk based development
-* Feature toggles
-* Deployment strategies
-
-OIDC, Github Actions
+* Trunk based development scales surprisingly well
+  * Reduces the window in which merge conflicts can arise, and when they do arise they're often smaller and easier to manage.
+  * Automatic testing prevents broken code from being merged to the main trunk.
+  * Large projects can be worked on by abstraction and incremental changes.
+    * Feature toggles allow to to merge code before it's "done" without breaking anything.
+      * Feature Toggle OSS tools include GrowthBook and Flagsmith, and SaaS tools include Split and LaunchDarkly.
+* Github Actions is a popular CI service.
 
 ## Chapter 6: How to work with multiple environments and teams
 

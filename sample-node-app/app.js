@@ -1,27 +1,16 @@
-const http = require('http');
+const express = require('express');
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello World!\n');
+const app = express();
+
+app.set('view engine', 'ejs');
+
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
 });
 
-const port = process.env.PORT || 8080;
-server.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+app.get('/name/:name', (req, res) => {
+
+  res.render('hello', {name: req.params.name});
 });
 
-// Quit on CTRL+C
-process.on('SIGINT', () => {
-  console.log('Received SIGINT. Shutting down...');
-  server.close(() => {
-    process.exit(0);
-  });
-});
-
-// Quit on Docker stop
-process.on('SIGTERM', () => {
-  console.log('Received SIGTERM. Shutting down...');
-  server.close(() => {
-    process.exit(0);
-  });
-});
+module.exports = app;

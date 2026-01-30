@@ -1,0 +1,18 @@
+name: Sample App Tests
+
+on: push  # The trigger that will cause this workflow to run.
+
+jobs:  # Defines one or more jobs (automations) to run in this workflow. By default these run sequentially, and you may define dependencies.
+  sample_app_tests:
+    name: "Run Tests Using Jest"
+    runs-on: ubuntu-latest  # The job runner. This is a Github hosted server with some default configuration.
+    steps:
+      - uses: actions/checkout@v2  # You can use shared and public workflows with the uses command.
+
+      - name: Install dependencies
+        working-directory: sample-node-app
+        run: npm install
+
+      - name: Run tests
+        working-directory: sample-node-app
+        run: npm test
