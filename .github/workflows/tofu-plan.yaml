@@ -1,7 +1,7 @@
 name: Tofu Plan
 
 on:  # This workflow only triggers on PRs targeting main thata have changes to the ch5 lambda test.
-  pull-requests:
+  pull_request:
     branches: ["main"]
     paths: ["ch5/lambda_test/**"]
 
