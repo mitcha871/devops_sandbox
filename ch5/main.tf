@@ -19,7 +19,7 @@ module "iam_roles" {
 
   enable_iam_role_for_testing = true
 
-  github_repo      = "mitcha871/devops_sandbox"
+  github_repo      = "mitcha871/devops_sandbox"  # This forms a condition in the trust policy to specify which repos are allowed to assume an IAM role
   lambda_base_name = "lambda-sample"
 
   enable_iam_role_for_plan  = true  # Read only. The OIDC provider will be able to assume this role from any branch

@@ -112,7 +112,7 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
 
 ## Chapter 5: How to set up continuous integration and continuous delivery
 
-* Trunk based development scales surprisingly well
+* Trunk based development scales surprisingly well.
   * Reduces the window in which merge conflicts can arise, and when they do arise they're often smaller and easier to manage.
   * Automatic testing prevents broken code from being merged to the main trunk.
   * Large projects can be worked on by abstraction and incremental changes.
@@ -145,6 +145,15 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
   * Supports collaboration, locking, multiple environments, encryption (state file may contain secrets).
   * Consider a scenario where you have multiple instances, some managed by IaC, others not. The state file manages the mapping such that Terraform knows which exact host it's responsible for.
   * More on managing state: https://www.fundamentals-of-devops.com/resources/2025/01/28/how-to-manage-state-and-environments-with-opentofu/
+* Three principles for CD:
+  * Automate all the steps that can be automated
+  * Deploy only from a deployment server (Why? Full automation, repeatability and permission management.)
+  * Protect the deployment server
+    * Because deployment server need to be given write permissions, they are high value targets for bad actors.
+      * Don't use long lived credentials
+      * Lock down your VCS
+      * Enforce an approval workflow
+      * Separate out pipelines as sensible, limiting permissions for each
 
 ## Chapter 6: How to work with multiple environments and teams
 
