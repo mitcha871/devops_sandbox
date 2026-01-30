@@ -119,6 +119,7 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
     * Feature toggles allow to to merge code before it's "done" without breaking anything.
       * Feature Toggle OSS tools include GrowthBook and Flagsmith, and SaaS tools include Split and LaunchDarkly.
 * Github Actions is a popular CI service.
+* Github Actions can authenticate with AWS through Open ID Connect (OIDC).
 
 ## Chapter 6: How to work with multiple environments and teams
 
