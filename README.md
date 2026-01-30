@@ -120,6 +120,31 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
       * Feature Toggle OSS tools include GrowthBook and Flagsmith, and SaaS tools include Split and LaunchDarkly.
 * Github Actions is a popular CI service.
 * Github Actions can authenticate with AWS through Open ID Connect (OIDC).
+* Deployment strategies
+  * You bring everything down, install, and bring everything back up.
+    * Pros: Everyone is always using the same version. Does not require any additional infrastructure.
+    * Cons: Users face downtime.
+  * You add new v2 instances, and as they become healthy you decomission v1 instances.
+    * Pros: The service is always available.
+    * Cons: Some users are using v1 while others are using v2. May require additional infrastructure.
+  * You remove v1 instances and replace them with v2 instances.
+    * Pros: Addresses statefulness requirements.
+    * Cons: Some users are on v1 while other are on v2.
+  * Blue/Green.
+    * Pros: Switching to the new version (or back!) is quick. Everyone is always using the same version of the service.
+    * Cons: Requires replicating all of your infrastructure.
+* Deployment strategies can be enhanced by:
+  * Canary deployments: Release one v2 instance and monitor that instance for some time before replacing all instances with the new version.
+    * This reduces the blast radius for any issues with the new deployment.
+  * Feature toggle: Release v2, but with new features hidden behind a toggle. Toggle the switch when ready to deploy.
+    * Feature toggles decouple package release from feature release which can make releases significantly less risky, and allow you to unrelease problematic features without having to rollback any code.
+  * Promotion deployment: Have multiple environments and promote code through them.
+* GitOps is:
+  * Declarative, versioned and immutable, pulled automatically, continuously reconciled.
+* Why use a remote backend to store IaC state?
+  * Supports collaboration, locking, multiple environments, encryption (state file may contain secrets).
+  * Consider a scenario where you have multiple instances, some managed by IaC, others not. The state file manages the mapping such that Terraform knows which exact host it's responsible for.
+  * More on managing state: https://www.fundamentals-of-devops.com/resources/2025/01/28/how-to-manage-state-and-environments-with-opentofu/
 
 ## Chapter 6: How to work with multiple environments and teams
 

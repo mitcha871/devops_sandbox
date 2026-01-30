@@ -22,10 +22,9 @@ module "iam_roles" {
   github_repo      = "mitcha871/devops_sandbox"
   lambda_base_name = "lambda-sample"
 
-  enable_iam_role_for_plan  = true
-  enable_iam_role_for_apply = true
+  enable_iam_role_for_plan  = true  # Read only. The OIDC provider will be able to assume this role from any branch
+  enable_iam_role_for_apply = true  # Read/write. The OIDC provider will be able to assume this role from main only.
 
-  # # TODO: fill in your own bucket and table name here!
-  # tofu_state_bucket         = "fundamentals-of-devops-tofu-state"
-  # tofu_state_dynamodb_table = "fundamentals-of-devops-tofu-state"
+  tofu_state_bucket         = "fundamentals-of-devops-tofu-state-202601301234"
+  tofu_state_dynamodb_table = "fundamentals-of-devops-tofu-state-202601301234"
 }
