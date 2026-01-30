@@ -20,7 +20,7 @@ run "validate" {  # After the apply, the tests to be run on the deployed infrast
   }
 
   assert {
-    condition     = data.http.test_endpoint.response_body == "Hello, World!"
+    condition     = data.http.test_endpoint.response_body == "Hello, World! Update!"
     error_message = "Unexpected body: ${data.http.test_endpoint.response_body}"
   }
 }
