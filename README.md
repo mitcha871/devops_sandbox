@@ -215,3 +215,7 @@ Key ideas:
 * Platform Engineering
 
 Runme, Snyk, Chainguard, Backstage
+
+
+---
+*Clipper was here. Connection test successful.*
