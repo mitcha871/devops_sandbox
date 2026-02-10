@@ -157,11 +157,35 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
 
 ## Chapter 6: How to work with multiple environments and teams
 
-Key ideas:
+* Why do we need multiple environments?
+  * The production environment may be too complex to set up on a single machine for testing
+    * Testing in prod may impact live service if an improperly tested change is deployed straight in to it
+  * To reduce latency to users by deploying the service and its resources closer to users.
+  * To comply with any relevant local data sovereignty laws.
+  * To increase resiliency in the event one environment is compromised.
+* Environment separation and possible definitions
+  * Logical: Same hardware, but defined in software; e.g. using a different kubernetes namespace.
+    * Pros: Cheap, simple, lowest management overhead. Cons: Relatively high likelihood that one environment can impact another.
+  * Separate servers:
+    * Pros: Relatively unlikely that different environments will impact each other. Cons: You have to pay for more servers.
+  * Separate networks:
+    * Pros: Even less likely that different environments can impact each other. Cons: You have to manage both networks now.
+  * Separate accounts: Cloud providers let you create several associated accounts. e.g. GCP's projects, Azure's subscriptions
+    * Pros: By default these are even more separated than above options. Cons: Even more management overhead.
+  * Separate data centers in the same region: e.g. us-east-1 and us-east-2
+  * Separate data centers in different regions: e.g. us-east-1 and us-central-1
+* The main challenges of a distributed system:
+  * Increased operational overhead.
+  * Increased data storage complexity.
+  * Increased application configuration complexity.
+    * There are two main ways of managing configuration complexity:
+      * Configuration files are checked into your VCS (Build time management)
+        * Generally recommended for most configuration.
+      * Configuration data are read from a data store (Run time management)
+        * Generally recommended if your configuration changes frequently
+* AWS recommends a multi-account strategy, because by default different accounts are strictly separated from each others' resources.
+  * ie. a root management account (that does nothing but manage other accounts), and child dev, stage, prod account.
 
-* Multiple environments/libraries/services
-
-AWS IAM, Kubernetes
 
 ## Chatpter 7: How to set up networking
 
