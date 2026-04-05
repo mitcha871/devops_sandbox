@@ -185,7 +185,25 @@ Code examples provided by the book [here](https://github.com/brikis98/devops-boo
         * Generally recommended if your configuration changes frequently
 * AWS recommends a multi-account strategy, because by default different accounts are strictly separated from each others' resources.
   * ie. a root management account (that does nothing but manage other accounts), and child dev, stage, prod account.
-
+* Code should also be broken up in such a way as to give confidence that changing one part of it will not affect another.
+  * However, breaking up a codebase is not a costless activity. e.g. Backwards breaking changes become increasingly more difficult when the codebase is split up.
+* There are two main ideas to breaking up a codebase:
+  * Split into multiple libraries
+    * ie. you depend not on the source code of the abstraction, but on a versioned artifact.
+    * Semantic versioning: _MAJOR_._MINOR_._PATCH_ where _MAJOR_ increments with breaking changes to the API, _MINOR_ increments when you add backward compatible functionality, and _PATCH_ increments with bug fixes.
+  * Split into multiple services
+    * This is loosely defined, but a key distinction is that services communicate through messages sent over a network. Other terminologies: Service Oriented Architecture, Microservices, Event Driven Architecture.
+* Issues with breaking up a codebase:
+  * You have to manage multiple codebases
+    * Consider a case where you have to make a broad change accross multiple codebases - hard in a microservice architecture, but much easier in a monolith.
+  * You have to integrate multiple codebases
+    * Splitting out the codebase essentially means you're planning to do late integration of your code. This can mean bigger and harder to test changes. It can also mean many and long dependency chains.
+  * You have to administer multiple services
+    * Pulic API maintenance overhead can be significant, and makes backwards breaking changes very difficult\
+    * Service deployment interaction may grow exponentially to the number of services your have (n services to deploy can mean n^2 interactions between them).
+    * Bug finding is potentially complicated over many services.
+  * If the seams between the codebase are well chosen, it will accelerate production by assigning well-defined and well-bounded ownership. If the seams are poorly chosen, multiple teams will need to sign off on changes or changes will need to be done in multiple services.
+  * Generally, don't be too early in splitting up the codebase. Take the monolith as far as it can go - at which point you'll have a good sense of where the seams in your code are (ie. which files are nearly always changed together? which files are always touched only by team A/B? Which parts have specific resource requirements unlike other parts of the code?)
 
 ## Chatpter 7: How to set up networking
 
